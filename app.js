@@ -325,6 +325,7 @@ const app = {
                         if(!_this.songs['love'].includes(newLove)) {
                             _this.songs['love'].push(newLove)
                             _this.setConfigLove(_this.songs['love'])
+                            alert(`bạn đã thêm bài hát ${newLove.name} vào mục yêu thích`)
                         } else {
                             alert('Bài hát này đã có trong mục yêu thích')
                         }
