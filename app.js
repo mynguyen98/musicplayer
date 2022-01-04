@@ -311,28 +311,47 @@ const app = {
                     _this.render()
                 }
                 if(e.target.closest('.option')) {
-                    addLoveSong.classList.add('add-love-active')
-                    overlay.classList.add('add-overlay-active')
-                    addToLove.onclick = function() {
-                        const indexTrace = parseInt(allSongNode.getAttribute('data-index'))
-                        console.log(indexTrace)
-                        if(_this.currentList === 'us') {
-                            newLove = _this.songs['us'][indexTrace]
-                        } else {
-                            newLove = _this.songs['vietnamese'][indexTrace]
-                        }
-                        _this.setConfigLove(newLove)
-                        if(!_this.songs['love'].includes(newLove)) {
-                            _this.songs['love'].push(newLove)
-                            _this.setConfigLove(_this.songs['love'])
-                            alert(`bạn đã thêm bài hát ${newLove.name} vào mục yêu thích`)
+                    if(_this.currentList === 'love') {
+                        //xóa bài hát
+                        addLoveSong.classList.add('add-love-active')
+                        overlay.classList.add('add-overlay-active')
+                        addToLove.onclick = function() {
+                            var indexTrace = parseInt(allSongNode.getAttribute('data-index'))
+                            _this.songs['love'].splice(indexTrace ,1)
                             _this.render()
-                        } else {
-                            alert('Bài hát này đã có trong mục yêu thích')
+                            _this.setConfigLove(_this.songs['love'])
+                            alert(`bạn đã xóa bài hát đã chọn khỏi mục yêu thích`)    
                         }
-
+                        //xóa bài hát
+                    } else {
+                        //thêm bài hát
+                        addLoveSong.classList.add('add-love-active')
+                        overlay.classList.add('add-overlay-active')
+                        addToLove.onclick = function() {
+                            var indexTrace = parseInt(allSongNode.getAttribute('data-index'))
+                            console.log(indexTrace)
+                            if(_this.currentList === 'us') {
+                                newLove = _this.songs['us'][indexTrace]
+                            } else {
+                                newLove = _this.songs['vietnamese'][indexTrace]
+                            }
+                            _this.setConfigLove(newLove)
+                            if(!_this.songs['love'].includes(newLove)) {
+                                _this.songs['love'].push(newLove)
+                                _this.setConfigLove(_this.songs['love'])
+                                alert(`bạn đã thêm bài hát ${newLove.name} vào mục yêu thích`)
+                            } else {
+                                alert('Bài hát này đã có trong mục yêu thích')
+                            }
+                            console.log(_this.songs['love'])
+                            
+    
+                        }
+                        //thêm bài hát
+           
                     }
                 }
+
             }
         }
 
@@ -347,36 +366,43 @@ const app = {
         }
         //xử lý đổi list bài hát
         vietnamBtn.onclick = function() {
+            addToLove.innerText = 'Thêm vào danh sách bài hát yêu thích'
             usBtn.classList.remove('active')
             loveBtn.classList.remove('active')
             vietnamBtn.classList.add('active')
             _this.currentList = 'vietnamese'
+            _this.currentIndex = 0
             _this.loadCurrentSong()
             _this.render()
-          //  playBtn.click()
+            audio.play()
+            playBtn.click()
         } 
         usBtn.onclick = function() {
+            addToLove.innerText = 'Thêm vào danh sách bài hát yêu thích'
             vietnamBtn.classList.remove('active')
             loveBtn.classList.remove('active')
             usBtn.classList.add('active')
             _this.currentList = 'us'
+            _this.currentIndex = 0
             _this.loadCurrentSong()
             _this.render()
-         //   audio.play()
-         //   playBtn.click()
+            audio.play()
+            playBtn.click()
         } 
         loveBtn.onclick = function() {
             if(_this.songs['love'].length === 0) {
                 alert('bạn chưa có bài hát yêu thích')
             } else {
+            addToLove.innerText = 'Xóa bài hát khỏi mục yêu thích'
             vietnamBtn.classList.remove('active')
             usBtn.classList.remove('active')
             loveBtn.classList.add('active')
             _this.currentList = 'love'
+            _this.currentIndex = 0
             _this.loadCurrentSong()
             _this.render()
-         //   audio.play()
-         //   playBtn.click()
+            audio.play()
+            playBtn.click()
             }
         } 
         //xử lý khi click thêm vào bài hát yêu thích
