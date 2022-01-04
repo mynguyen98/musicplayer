@@ -321,6 +321,8 @@ const app = {
                             _this.render()
                             _this.setConfigLove(_this.songs['love'])
                             alert(`bạn đã xóa bài hát đã chọn khỏi mục yêu thích`)    
+                            addLoveSong.classList.remove('add-love-active')
+                            overlay.classList.remove('add-overlay-active') 
                         }
                         //xóa bài hát
                     } else {
@@ -344,6 +346,8 @@ const app = {
                                 alert('Bài hát này đã có trong mục yêu thích')
                             }
                             console.log(_this.songs['love'])
+                            addLoveSong.classList.remove('add-love-active')
+                            overlay.classList.remove('add-overlay-active') 
                             
     
                         }
