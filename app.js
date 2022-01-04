@@ -326,6 +326,7 @@ const app = {
                             _this.songs['love'].push(newLove)
                             _this.setConfigLove(_this.songs['love'])
                             alert(`bạn đã thêm bài hát ${newLove.name} vào mục yêu thích`)
+                            _this.render()
                         } else {
                             alert('Bài hát này đã có trong mục yêu thích')
                         }
