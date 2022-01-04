@@ -353,7 +353,7 @@ const app = {
             _this.currentList = 'vietnamese'
             _this.loadCurrentSong()
             _this.render()
-            playBtn.click()
+          //  playBtn.click()
         } 
         usBtn.onclick = function() {
             vietnamBtn.classList.remove('active')
@@ -362,8 +362,8 @@ const app = {
             _this.currentList = 'us'
             _this.loadCurrentSong()
             _this.render()
-            audio.play()
-            playBtn.click()
+         //   audio.play()
+         //   playBtn.click()
         } 
         loveBtn.onclick = function() {
             if(_this.songs['love'].length === 0) {
@@ -375,8 +375,8 @@ const app = {
             _this.currentList = 'love'
             _this.loadCurrentSong()
             _this.render()
-            audio.play()
-            playBtn.click()
+         //   audio.play()
+         //   playBtn.click()
             }
         } 
         //xử lý khi click thêm vào bài hát yêu thích
